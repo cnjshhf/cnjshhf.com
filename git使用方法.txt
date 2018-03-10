@@ -1,0 +1,5 @@
+git init 设置本地仓库
+git add 将文件加入到分支
+git commit -am “本次修改的说明”
+git push 上传本次修改
+vi .git/config可以修改git仓库地址
