@@ -1,5 +1,23 @@
 git init 设置本地仓库
-git add 将文件加入到分支
+git add 将文件加入到分支 git add *将文件夹下面所有文件加入
 git commit -am “本次修改的说明”
 git push 上传本次修改
 vi .git/config可以修改git仓库地址
+拉取远程分支名
+git clone -b [] url
+
+查看分支
+git branch 查看所有分支
+cat .git/HEAD 查看当前分支 例如ref: refs/heads/master
+创建分支
+git branch [分支名称]
+删除分支
+git branch -D [分支名称]
+修改分支
+git branch -m  [] []
+上传分支
+git push origin [分支名称]
+合并分支
+git checkout [要合并其他分支的分支名称]
+git merge “说明文字” HEAD [要合并的分支名称]
+或者使用git pull . [要合并的分支名称]
