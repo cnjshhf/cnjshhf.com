@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint id="webmanger" type="consumer">
+        <queue></queue>
+        <mappingKey>EXTRA(path)</mappingKey>
+        <asyncSaveKey></asyncSaveKey>
+        <asyncLoadKey></asyncLoadKey>
+        <notifyScript>webmanger_s_web_handler_pack</notifyScript>
+        <throughput></throughput>
+        <timeout>10</timeout>
+        <message type="JSON" handler="">
+                <offset></offset>
+                <lengthPack></lengthPack>
+                <charset>UTF-8</charset>
+        </message>
+</endpoint>
