@@ -32,6 +32,8 @@ typedef struct {
     char encoding_dump[21];
 } XMLDOC;
 
+int encoding(const char *from, const char *to, char **buf);
+
 XMLNODE *getXMLNode(XMLDOC *xml, const char *xpath)
 {
     xmlNsPtr            ns;
@@ -108,7 +110,7 @@ XMLDOC *loadXMLFile(const char *file)
 {
     XMLDOC *xml;
 
-    if (!(xml = malloc(sizeof(XMLDOC)))) {
+    if (!(xml = (XMLDOC * )malloc(sizeof(XMLDOC)))) {
         printf("malloc() error: %s", strerror(errno));
         return NULL;
 
@@ -210,7 +212,8 @@ int encoding(const char *from, const char *to, char **buf)
     int i_len,o_len;
 
     if (strlen(from) == strlen(to)) {
-        for (i=0; to[i]; i++) if (toupper(from[i]) != toupper(to[i])) break; 
+        //for (i=0; to[i]; i++) if (toupper(from[i]) != toupper(to[i])) break; 
+        for (i=0; to[i]; i++) if (from[i] != to[i]) break;
     }
     if (!to[i]) return 0;
 
@@ -221,7 +224,7 @@ int encoding(const char *from, const char *to, char **buf)
 
     i_len = strlen(*buf) + 1;
     o_len = i_len * 2;
-    out = xmlMalloc(o_len);
+    out = (xmlChar*)xmlMalloc(o_len);
 
     if (convert(cd, (unsigned char *)(*buf), &i_len, (unsigned char *)out, &o_len)) {
         xmlFree(out);
@@ -238,6 +241,6 @@ int main()
     XMLDOC *doc;
     char buf[1024] = {0};
     doc = loadXMLFile("1.xml");
-    getXMLText(doc, "message/charset", buf, sizeof(buf));
+    getXMLText(doc, "script", buf, sizeof(buf));
     printf("[%s]",buf);
 }

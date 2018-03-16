@@ -1,15 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<endpoint id="webmanger" type="consumer">
-        <queue></queue>
-        <mappingKey>EXTRA(path)</mappingKey>
-        <asyncSaveKey></asyncSaveKey>
-        <asyncLoadKey></asyncLoadKey>
-        <notifyScript>webmanger_s_web_handler_pack</notifyScript>
-        <throughput></throughput>
-        <timeout>10</timeout>
-        <message type="JSON" handler="">
-                <offset></offset>
-                <lengthPack></lengthPack>
-                <charset>UTF-8</charset>
-        </message>
-</endpoint>
+<?xml version="1.0" encoding="UTF-8"?>                               
+<route id="vend_s_ckkbin_r">                                           
+<script>                                                             
+  <![CDATA[ 
+  SET  cardbin    = MAPGET($content,cardbin)            //卡bin                                                         
+  //查看卡BIN                                                               
+  VAR schema  = MACRO(vend,schema)                                   
+                                                                     
+                                                                     
+  SQL [INFO_ckkbin@mysql]                                                
+  select
+  CARDBIN    ,
+  CARDTYPE   ,
+  CARDNAME   ,
+  OPBANKOL   ,
+  OPBANKNAME 
+
+  from {#schema}t_cardbin where CARDBIN = '{$CARDBIN}' ;                                                                   
+  SET results = #INFO_ckkbin                                             
+                                                                     
+  RETURN                                                             
+                                                                     
+  ]]>                                                                
+</script>                                                            
+</route>                                                             
+
