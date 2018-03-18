@@ -34,6 +34,7 @@ typedef struct {
 
 int encoding(const char *from, const char *to, char **buf);
 
+
 XMLNODE *getXMLNode(XMLDOC *xml, const char *xpath)
 {
     xmlNsPtr            ns;
@@ -143,7 +144,6 @@ int getXMLText(XMLDOC *xml, const char *xpath, char *text, int size)
     xmlNodePtr node;
 
     if (!(node = getXMLNode(xml, xpath))) {
-        /* printf("getXMLNode(%s) error", ((!xpath)? "":xpath)); */    /*mod by dwxiong 2014-11-5 18:47:03*/
         printf("getXMLNode(%s) error", ((!xpath)? "":xpath));
         return -1;
 
@@ -235,6 +235,19 @@ int encoding(const char *from, const char *to, char **buf)
     *buf = (char *)out;
     return 0;
 }
+void freeXML(XMLDOC *xml)
+{
+    if (xml) {
+        if (xml->doc) {
+            xmlFreeDoc(xml->doc);
+            /*xmlCleanupParser();*/
+
+        }
+        free(xml);
+
+    }
+
+}
 
 int main()
 {
@@ -243,4 +256,6 @@ int main()
     doc = loadXMLFile("1.xml");
     getXMLText(doc, "script", buf, sizeof(buf));
     printf("[%s]",buf);
+    freeXML(doc);
+    return 0;
 }
