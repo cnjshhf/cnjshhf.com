@@ -10,7 +10,7 @@
 
 int handle(void *data)
 {
-    printf("test调用成功\n");
+    printf("模块载入测试成功\n");
 }
 
 void init(Module *mod)

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint id="bank_abc_xml_end" type="consumer">
+	<queue></queue>
+	<mappingKey>XML(head/transcode)</mappingKey>
+	<asyncSaveKey></asyncSaveKey>
+	<asyncLoadKey></asyncLoadKey>
+	<notifyScript></notifyScript>
+	<throughput></throughput>
+	<timeout></timeout>
+	<message type="XML" handler="">
+		<offset>10</offset>
+		<lengthPack></lengthPack>
+		<charset>UTF-8</charset>
+	</message>
+</endpoint>
