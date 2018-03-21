@@ -27,5 +27,11 @@ extern void LOG(char *fl,int li,const char* ms, ...);
 
 extern int setLogName(char *str);
 
+extern char *strRepl(char *s, const char *s1, const char *s2);
+
+extern int regxmatch(char *bematch,char *pattern);
+
+extern void FreeMem(char **pp,int num);
+
 #endif
 

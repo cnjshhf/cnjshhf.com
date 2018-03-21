@@ -96,101 +96,165 @@ void freeconf(Config * g_conf)
     }   
     g_conf->load_modules.clear();
 
-	
+    for (it = g_conf->xml_modules.begin();it < g_conf->xml_modules.end(); it++ )
+        {   
+        if(*it != NULL){
+            delete *it;
+            *it = NULL;
+        };  
+    }   
+    g_conf->xml_modules.clear();
+
 }
-void handle_normal(Xml *xml,char *path,char (*nodename)[50],int nodecount) 
+
+void handle_normal(Xml *xml,char *filename,char (*nodename)[50],int nodecount,char *curlparm) 
 {
     XMLDOC *doc;
     int i,j;
     char buf[1024] = {0};
+    char tmp[1024] = {0};
 
     count =0;
     memset(filepath,0,sizeof(filepath));
 
-    getxmlpath(path);
-    for(i = 0;i <nodecount; i++){
-        for(j = 0;j<count;j++){                                                          
+    for(i = 0;i <count; i++){
+        doc = xml->loadXMLFile(filepath[i]);
+        for(j = 0;j<nodecount;j++){                                                          
             memset(buf,0,sizeof(buf));
-            doc = xml->loadXMLFile(filepath[j]);
-            xml->getXMLText(doc, nodename[i], buf, sizeof(buf));
-            printf("[%s]",buf);
+            xml->getXMLText(doc, nodename[j], buf, sizeof(buf));
+            snprintf(tmp,sizeof(tmp),"{%s:%s}",filename,nodename);
+            strRepl(curlparm,tmp,buf);
             xml->freeXML(doc);
-            printf("[%d]",j);
         }   
+        printf("[%s]",curlparm);
     }
 }
 
-void handle_list(Xml *xml,char *path,list<string> mylist) 
+char **getMem(int num)
 {
-    XMLDOC *doc;
-    int i,j;
-    char buf[1024] = {0};
- 
-    count =0; 
-    memset(filepath,0,sizeof(filepath));
- 
-    getxmlpath(path);
-    for(i = 0;i <(int) mylist.size() ; i++){
-        for (j = 0;j<count;j++){
-            memset(buf,0,sizeof(buf));
-            doc = xml->loadXMLFile(filepath[j]);
-            xml->getXMLText(doc, mylist, buf, sizeof(buf));
-            printf("[%s]",buf);
-            xml->freeXML(doc);
-            printf("[%d]",j);
-        }   
-    }   
+    int i = 0;
+    char **pp = (char **)malloc(sizeof(num*sizeof(char *)));
+    if (pp == NULL)
+    {
+        return NULL;
+
+    }
+    for (i=0; i<num; i++)
+    {
+        pp[i] = (char *)malloc(1024);
+        if (pp[i] == NULL)
+        {
+            return NULL;
+
+        }
+
+    }
+    return pp;
+
 }
 
+int getAngEle(char *line,char (*buf)[50],int *elecount)
+{
+    int len=0,i=0;
+    char *pch =NULL;
+    while(sscanf (line+len,"%*[^{]{%[^}]",buf[i])!=EOF)
+    {
+        pch = strstr(line,buf[i]);
+        len = pch-line+strlen(buf[i]);
+        *elecount+=1;
+        i++;
+        //printf("%s",buf[i]);
+    }
+    return 0;
+}
 
 int main(void )
 {
-	
+
     char log[] = "tool.log";
     Module *module = NULL;
     Xml *xml = NULL;
     void * a = NULL;
-    int i;
-    char nodename[][50] = {"mappingKey","queue"};
-    char str[1024];
+    int i = 0;
+    char nodename[][50] = {0};
+    char nodepath[256] = {0};
+    char filedes[1024] = {0};
+    char confele[50][50];
+    char curlparm[1024];
+    int argc;
+    char **argv = NULL;
+    int elecount =0;
+    char tmp[1024*10] ={0};
 
-    list<string> mylist;
-    list<string>::iterator itlist;
-    mylist.push_back("mappingKey");
-    mylist.push_back("queue");
-
-
-
-    
-
+    /*载入配置文件*/
 	Config *g_conf = NULL;
     g_conf = initconfig();
     loadconfig(g_conf);
-    //printf("[%s]",g_conf->module_path); 
+    
+    //printf("[%s]",strRepl(*itvurl,"mappingKey","mappingkey"));
 
+    /*建立路径映射*/
+    map<string,string> route;
+    map<string,string>::iterator itmap;
+    route ["endpoint"]="/config/endpoint";
+    route ["tasks"]="/spring";
+    route ["macro"]="/config/macro";
+    route ["mapping"]="/config/mapping";
+    route ["message"]="/config/message";
+    route ["pack"]="/config/pack";
+    route ["procedure"]="/config/procedure";
+    route ["route"]="/config/route";
+    route ["service"]="/config/service";
+    route ["unpack"]="/config/unpack";
+    
+
+    /*载入测试动态库文件*/
     vector<char *>::iterator it = g_conf->load_modules.begin();
     for(; it != g_conf->load_modules.end(); it++) {
         module = dso_load(g_conf->module_path, *it); 
         if(module->handle)module->handle(a);
     } 
     
+    /*载入xml解析库文件*/
     vector<char *>::iterator its = g_conf->xml_modules.begin();
     for(; its!= g_conf->xml_modules.end(); its++) {
         xml = dso_xml(g_conf->module_path, *its); 
     } 
 
-    //handle_normal(xml,"/home/tpbuswfgjj/demo01/xml/endpoint",nodename,2);
-    handle_list(xml,"/home/tpbuswfgjj/demo01/xml/endpoint",mylist);
+    //printf("%s",route.find("endpoint")->second.c_str()); 
+    vector<char *>::iterator itvurl = g_conf->vurl.begin();
+
+    getAngEle(*itvurl,confele,&elecount);
+
+    for(i=0;i<elecount;i++)
+    {
+        argv = strsplit(confele[i], ':', &argc, 1);
+        strcpy(nodename[i],argv[1]);
+        free(argv);
+        argv =NULL;
+    }
 
 
-    map<string,string> mymap;
-    map<string,string>::iterator itmap;
-    mymap["aa"]="100";
-    mymap["bb"]="200";
-    mymap["cc"]="300";
-    for(itmap =mymap.begin();itmap != mymap.end(); itmap++ )
-        sprintf(str+strlen(str),"[%s]=[%s]&",(*itmap).first.c_str(),(*itmap).second.c_str());
-    printf("%s",str);
+    vector<char *>::iterator itss;
+    for(itss = g_conf->vurl.begin();itss<g_conf->vurl.end();itss++)
+    {
+        count =0;
+        memset(filepath,0,sizeof(filepath));        
+        memset(tmp,0,sizeof(tmp));
+        memset(filedes,0,sizeof(filedes));
+
+        argv = strsplit(confele[0], ':', &argc, 1);
+        snprintf(filedes, sizeof(filedes), "%s%s", getenv("PRO_PATH"),route.find(argv[0])->second.c_str());
+        //printf("%s",filedes);
+        getxmlpath(filedes);
+        printf("test");
+        handle_normal(xml,argv[0],nodename,elecount,*itss);
+        free(argv);
+        argv =NULL;
+    }
+
+
+
     freeconf(g_conf);
 	setLogName(log);
 

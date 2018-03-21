@@ -218,7 +218,6 @@ void freeXML(XMLDOC *xml)
 
         }
         free(xml);
-        printf("[xml释放完成]\n");
 
     }
 

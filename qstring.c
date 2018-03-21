@@ -8,8 +8,64 @@
 #include <time.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <regex.h>
 
+int regxmatch(char *bematch,char *pattern){
+                                                                                                                                                                           
+    char errbuf[1024];
+    regex_t reg;
+    int err = 0,nm = 10; 
+    regmatch_t pmatch[nm];
+    char match[1024] = {0};
+ 
+    if(regcomp(&reg,pattern,REG_EXTENDED) < 0){ 
+        regerror(err,&reg,errbuf,sizeof(errbuf));
+        printf("err:%s\n",errbuf);
+    }   
+ 
+    err = regexec(&reg,bematch,nm,pmatch,0);
+ 
+    if(err == REG_NOMATCH){
+        //printf("no match\n");
+        printf("未设置端口\n");
+        return -1; 
+ 
+    }else if(err){
+        regerror(err,&reg,errbuf,sizeof(errbuf));
+        printf("err:%s\n",errbuf);
+        exit(-1);
+    }   
+ 
+    for(int i=0;i<10 && pmatch[i].rm_so!=-1;i++){
+        int len = pmatch[i].rm_eo-pmatch[i].rm_so;
+        if(len){
+            memset(match,'\0',sizeof(match));
+            memcpy(match,bematch+pmatch[i].rm_so,len);
+            //printf("%s\n",match);
+        }   
+    }   
+    return 0;
+}
 
+char *strRepl(char *s, const char *s1, const char *s2)
+{
+    int len,cnt;
+    char *p,*sp,*dp,*pos=s;
+
+    while (1) {
+        if ((p = strstr(pos, s1)) == NULL) return s;
+        len = strlen(s2) - strlen(s1);
+        if (len) {
+            sp = p + strlen(s1);
+            dp = sp + len;
+            cnt = strlen(sp) + 1;
+            memmove(p+strlen(s1)+len, p+strlen(s1), cnt);
+        }
+        memcpy(p, s2, strlen(s2));
+        pos = p + strlen(s2);
+        if (*pos == 0) return s;
+    }
+}
  
 char * strcat2(int argc, const char *str1, const char * str2, ...) 
 {
@@ -85,6 +141,24 @@ int yesnotoi(char *str)
     if (strcasecmp(str,"no") == 0) return 0;
     return -1;
 }
+
+void FreeMem(char **pp,int num)
+{       
+    int i = 0;
+    if (pp == NULL)
+    {   
+        return;
+        
+    }   
+    for (i=0; i<num; i++)
+    {   
+        free(pp[i]);
+        
+    }   
+    free(pp);
+    pp=NULL;
+    return;
+}       
 
 int setLogName(char *str)
 {       
