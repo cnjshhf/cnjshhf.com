@@ -1,0 +1,5 @@
+运行run as maven install
+
+1打开help->find action(#maven project)
+2展开lifecycle，右击package->maven build
+3生成的jar包在target目录
