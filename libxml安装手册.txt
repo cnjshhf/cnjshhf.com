@@ -1,0 +1,3 @@
+°²×°pythonÒÀÀµ
+yum -y install python-devel
+sudo make make install

@@ -1,0 +1,14 @@
+官网下载h2.zip
+找到h2目录下bin下面的h2-1.4.197.jar
+运行java -jar h2-1.4.197.jar -tcpAllowOthers
+后台会启动一个9092的tcp监听端口（需手动关闭）
+
+网页客户端上面设置成h2 server模式
+填写jdbc url为
+jdbc:h2:tcp://118.25.40.183:9092/~/conf/webmanger/tmpdir/data/testdb
+账户密码为sa pwd
+连接数据库
+
+设置多连接h2数据库
+tpbus中app配置文件设置jdbc url后添加;FILE_LOCK=NO可以设置成无锁
+允许tcp模式和file模式混合连接数据库

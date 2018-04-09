@@ -1,0 +1,5 @@
+unexpected inconsistency错误
+进入root环境
+运行
+fsck –y  /dev/mapper/VolGroup-lv_root
+重启
