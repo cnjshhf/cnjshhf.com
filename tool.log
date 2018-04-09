@@ -1,0 +1,67 @@
+2018-02-12 19:35:50 |4698|curtool.c->50[[{"tranname":"测试交易码","seqnum":"20170101125959123456","amount":1000.22,"tranacc":"hhf","traninacc":"1551155155","transtat":"1","equipcode":"ST110","einsname":"测试机构","einscode":"testjg110","equiptype":"测试的类型","equipmodel":"ST"},{"tranname":"测试交易码","seqnum":"20170101125959123457","amount":1000.22,"tranacc":"hhf","traninacc":"1551155155","transtat":"1","equipcode":"ST110","einsname":"测试机构","einscode":"testjg110","equiptype":"测试的类型","equipmodel":"ST"}]]
+2018-02-12 19:35:50 |4698|curtool.c->50[[]]
+2018-02-12 19:35:50 |4698|curtool.c->50[[{"transcount":0}]]
+2018-02-12 19:35:50 |4698|curtool.c->50[[]]
+2018-02-12 19:35:50 |4698|curtool.c->50[[]]
+2018-02-12 19:35:50 |4698|curtool.c->50[[{"equnum":"ST110","vername":"测试包","packagename":"test.package","apptype":"测试类型","upddate":20170201,"insname":"测试机构110","equipplace":"测试的地址"}]]
+2018-02-12 19:35:50 |4698|curtool.c->50[[{"vernum":"1.0","packagename":"test.package","deppagenum":"无依赖","vername":"测试包","softdev":"测试公司","apptype":"测试类型","isperload":"2"}]]
+2018-02-12 19:36:40 |4698|curtool.c->50[HTTP/1.1 500 Server Error
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[Cache-Control: must-revalidate,no-cache,no-store
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[Content-Type: text/html;charset=iso-8859-1
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[Content-Length: 338
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[Server: Jetty(9.4.7.v20170914)
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[<html>
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[<head>
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[<title>Error 500 Server Error</title>
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[</head>
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[<body><h2>HTTP ERROR 500</h2>
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[<p>Problem accessing /json/package/add. Reason:
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[<pre>    Server Error</pre></p><hr><a href="http://eclipse.org/jetty">Powered by Jetty:// 9.4.7.v20170914</a><hr/>
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[</body>
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[</html>
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[HTTP/1.1 200 OK
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[Date: Mon, 12 Mar 2018 11:36:40 GMT
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[Content-Type: application/json;charset=utf-8
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[Content-Length: 42
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[Server: Jetty(9.4.7.v20170914)
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[{"return":{"retinfo":"","retcode":"0000"}}]
+2018-02-12 19:36:40 |4698|curtool.c->50[HTTP/1.1 200 OK
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[Date: Mon, 12 Mar 2018 11:36:40 GMT
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[Content-Type: application/json;charset=utf-8
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[Content-Length: 42
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[Server: Jetty(9.4.7.v20170914)
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[
+]
+2018-02-12 19:36:40 |4698|curtool.c->50[{"return":{"retinfo":"","retcode":"0000"}}]

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint id="bdc_end" type="provider">
+        <queue></queue>
+        <mappingKey></mappingKey>
+        <asyncSaveKey></asyncSaveKey>
+        <asyncLoadKey></asyncLoadKey>
+        <notifyScript>exception_json_pack</notifyScript>
+        <throughput></throughput>
+        <timeout></timeout>
+        <message type="XML" handler="">
+                <offset></offset>
+                <lengthPack></lengthPack>
+                <charset>UTF-8</charset>
+        </message>
+</endpoint>

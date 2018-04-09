@@ -1,0 +1,83 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CC	makefile	/^CC=g++$/;"	m
+CONFPARSER_H	confparser.h	2;"	d
+CONF_FILE	confparser.h	8;"	d
+Config	confparser.h	/^typedef struct Config {$/;"	s
+Config	confparser.h	/^}Config;$/;"	t	typeref:struct:Config
+DLLO	makefile	/^DLLO=xml.so$/;"	m
+DLLO1	makefile	/^DLLO1=mytest.so$/;"	m
+DLLS	makefile	/^DLLS=xml.c$/;"	m
+DLLS1	makefile	/^DLLS1=mytest.c$/;"	m
+DSO_H	dso.h	2;"	d
+EXEC	makefile	/^EXEC=tool$/;"	m
+FreeMem	qstring.c	/^void FreeMem(char **pp,int num)$/;"	f
+INCLUDE	makefile	/^INCLUDE=-I\/usr\/local\/include\/libxml2 -L\/usr\/local\/lib$/;"	m
+LBJS	makefile	/^LBJS=$(LIBS:.c=.o)$/;"	m
+LIBC	makefile	/^LIBC=libpr.a$/;"	m
+LIBS	makefile	/^LIBS=qstring.c \\$/;"	m
+LOG	qstring.c	/^void LOG(char *fl,int li,const char* ms, ...)$/;"	f
+LOG1	qstring.h	4;"	d
+LogName	tool.c	/^char LogName[100];$/;"	v
+MAX_CONF_LEN	confparser.h	7;"	d
+Module	dso.h	/^typedef struct Module{$/;"	s
+Module	dso.h	/^} Module;$/;"	t	typeref:struct:Module
+OBJS	makefile	/^OBJS=$(SRCS:.c=.o)$/;"	m
+QSTRING_H	qstring.h	2;"	d
+SRCS	makefile	/^SRCS=tool.c$/;"	m
+XMLDOC	xml.h	/^} XMLDOC;$/;"	t	typeref:struct:__anon1
+XMLNODE	xml.h	21;"	d
+XML_H	xml.h	2;"	d
+Xml	dso.h	/^typedef struct Xml{$/;"	s
+Xml	dso.h	/^} Xml;$/;"	t	typeref:struct:Xml
+convert	dso.h	/^    int (*convert)(iconv_t, unsigned char *, int *, unsigned char *, int *);$/;"	m	struct:Xml
+convert	xml.c	/^static int convert(iconv_t cd, unsigned char *inbuf, int *inlen, unsigned char *outbuf, int *outlen)$/;"	f	file:
+count	tool.c	/^int count;$/;"	v
+doc	xml.h	/^    xmlDocPtr  doc;$/;"	m	struct:__anon1
+dso_load	dso.c	/^Module * dso_load(const char *path, const char *name)$/;"	f
+dso_xml	dso.c	/^Xml * dso_xml(const char *path, const char *name)$/;"	f
+encoding	xml.c	/^int encoding(const char *from, const char *to, char **buf)$/;"	f
+encoding_char	xml.h	/^    char encoding_char[21];$/;"	m	struct:__anon1
+encoding_dump	xml.h	/^    char encoding_dump[21];$/;"	m	struct:__anon1
+filepath	tool.c	/^char filepath[1024][1024];$/;"	v
+freeXML	dso.h	/^    void (*freeXML)(XMLDOC *);$/;"	m	struct:Xml
+freeXML	xml.c	/^void freeXML(XMLDOC *xml)$/;"	f
+freeconf	tool.c	/^void freeconf(Config * g_conf)$/;"	f
+getAngEle	tool.c	/^int getAngEle(char *line,char (*buf)[50],int *elecount)$/;"	f
+getMem	tool.c	/^char **getMem(int num)$/;"	f
+getXMLNode	xml.c	/^XMLNODE *getXMLNode(XMLDOC *xml, const char *xpath)$/;"	f
+getXMLText	dso.h	/^    int (*getXMLText)(XMLDOC *, const char *, char *, int );$/;"	m	struct:Xml
+getXMLText	xml.c	/^int getXMLText(XMLDOC *xml, const char *xpath, char *text, int size)$/;"	f
+getxmlpath	tool.c	/^int getxmlpath(char *des)$/;"	f
+handle	dso.h	/^    int (*handle)(void *);$/;"	m	struct:Module
+handle	mytest.c	/^int handle(void *data)$/;"	f
+handle_normal	tool.c	/^void handle_normal(Xml *xml,char *filename,char (*nodename)[50],int nodecount,char *curlparm) $/;"	f
+init	dso.h	/^    void (*init)(Module *);$/;"	m	struct:Module
+init	dso.h	/^    void (*init)(Xml *);$/;"	m	struct:Xml
+init	mytest.c	/^void init(Module *mod)$/;"	f
+init	xml.c	/^void init(Xml *xml)$/;"	f
+initconfig	confparser.c	/^Config * initconfig()$/;"	f
+loadXMLFile	dso.h	/^    XMLDOC *(*loadXMLFile)(const char *);$/;"	m	struct:Xml
+loadXMLFile	xml.c	/^XMLDOC *loadXMLFile(const char *file)$/;"	f
+load_modules	confparser.h	/^    vector<char *>   load_modules;$/;"	m	struct:Config
+loadconfig	confparser.c	/^void loadconfig(Config *conf)$/;"	f
+main	tool.c	/^int main(void )$/;"	f
+module_path	confparser.h	/^    char            *module_path;$/;"	m	struct:Config
+mytest	mytest.c	/^Module mytest = {$/;"	v
+regxmatch	qstring.c	/^int regxmatch(char *bematch,char *pattern){$/;"	f
+root	xml.h	/^    xmlNodePtr root;$/;"	m	struct:__anon1
+setLogName	qstring.c	/^int setLogName(char *str)$/;"	f
+std	tool.c	/^using namespace std;$/;"	v
+strRepl	qstring.c	/^char *strRepl(char *s, const char *s1, const char *s2)$/;"	f
+strcat2	qstring.c	/^char * strcat2(int argc, const char *str1, const char * str2, ...) $/;"	f
+strim	qstring.c	/^char * strim(char *str)$/;"	f
+strsplit	qstring.c	/^char ** strsplit(char *line, char delimeter, int *count, int limit)$/;"	f
+url	confparser.h	/^    char            *url;$/;"	m	struct:Config
+vurl	confparser.h	/^    vector<char *>   vurl;$/;"	m	struct:Config
+xml	xml.c	/^Xml xml = {$/;"	v
+xml_modules	confparser.h	/^    vector<char *>   xml_modules;$/;"	m	struct:Config
+yesnotoi	qstring.c	/^int yesnotoi(char *str)$/;"	f
