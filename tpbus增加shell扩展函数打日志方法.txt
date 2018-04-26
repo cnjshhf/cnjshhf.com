@@ -1,0 +1,17 @@
+1、cd进入tpbus的bin目录
+2、vi tpbus 增加一个shell函数，主要脚本内容如下
+#取tpbus的log路径
+logpath=`cat $PRO_PATH/logback.xml |grep "<File>"|awk -v RS="</*File>" 'NR==2{print}'`
+#设置类名（可修改main）
+class=`printf ' %-19s' main`
+#设置日志级别（可修改INFO）
+level=`printf ' %-6s' INFO`
+#设置时间
+date=`date "+%Y-%m-%d %H:%M:%S"`
+#设置要执行的程序
+exe=exe
+#循环将程序执行结果及标准错误追加输出到tpbus日志
+for content in `$exe`
+do
+        echo "$date |$level|$class| $content" >>$logpath 2>&1
+done

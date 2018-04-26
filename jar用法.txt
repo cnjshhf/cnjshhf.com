@@ -1,0 +1,3 @@
+建立软连接ln -s  /opt/freeware/old/jdk1.7.0_79/bin/jar jar，可以将jar等命令全局使用
+打jar包命令同打tar包命令jar xvf
+jar -cvfm 可以将MF文件打入，但是文件要自己指定class文件路径

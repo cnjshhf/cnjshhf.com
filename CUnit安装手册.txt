@@ -1,0 +1,9 @@
+root权限下
+1、wget CUnit.tar.gz2 到本地
+2、tar -jxvf CUnit-2.1-3
+3、./bootstrap（需要yum install libtool）
+4、./configure
+5、make
+6、make install
+7、验证安装成功：ls /usr/local/lib/libcunit.so
+ 

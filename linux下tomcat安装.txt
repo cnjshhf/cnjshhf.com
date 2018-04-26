@@ -1,0 +1,13 @@
+1、下载安装文件：Download apache-tomcat-7.0.14.tar.gz   下载
+
+2、输入命令解压文件：tar - zxvf apache-tomcat-7.0.14.tar.gz
+
+3、将文件放到特定目录：mv apache-tomcat-7.0.14 /usr/local/tomcat7.0
+
+4、配置环境变量vim /root/.bash_profile
+
+                          export CATALINA_HOME=/usr/local/tomcat7.0
+
+        export CATALINA_BASH=/usr/local/tomcat7.0
+
+5、启动：   /usr/local/tomcat7/bin/startup.sh 

@@ -1,0 +1,6 @@
+1、运行maven install 生成xxx.jar包
+2、用解压缩软件（我用的是360解压缩）打开xxx.jar包，找到jar包中的META-INF文件夹下的MANIFEST.MF文件
+3、选择用记事本打开MANIFEST.MF
+4、在最后一行增加Main-Class: App(注意这里App前面有个空格)
+说明：App为类名，加相对java文件夹的相对路径，比如App.class在xxx/java/cn/congin/.../App.class下，那么Main-Class: cn/congin/.../App
+5运行jar包java -jar xxx.jar

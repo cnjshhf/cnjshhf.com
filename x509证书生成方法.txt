@@ -1,0 +1,9 @@
+1https://jingyan.baidu.com/article/6c67b1d6be538c2787bb1e06.html
+openssl genrsa -out ca-key.pem 1024
+openssl req -new -out ca-req.csr -key ca-key.pem (-config openssl.cnf)
+openssl x509 -req -in ca-req.csr -out ca-cert.pem -signkey ca-key.pem -days 365
+
+生成的ca-cert.pem用于校验
+ca-key为私钥
+
+另外还有服务端和客户端的密钥生成方法

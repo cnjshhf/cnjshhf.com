@@ -1,0 +1,4 @@
+1、openssl genrsa -out key.pem 1024生成私钥
+2、openssl rsa -in key.pem -RSAPublicKey_out -out pubkey.pem （pem rsaPublicKey格式）
+3、openssl rsa -in key.pem -pubout -out pubkey.pem （pem格式）
+4、https://blog.csdn.net/d_a_r_k/article/details/51849740 详细过程
