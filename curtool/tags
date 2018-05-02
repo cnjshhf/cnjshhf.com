@@ -1,0 +1,44 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CC	makefile	/^CC=g++$/;"	m
+CONFPARSER_H	confparser.h	2;"	d
+CONF_FILE	confparser.h	8;"	d
+Config	confparser.h	/^typedef struct Config {$/;"	s
+Config::url	confparser.h	/^    char            *url;$/;"	m	struct:Config	access:public
+Config::vurl	confparser.h	/^    vector<char *>   vurl;$/;"	m	struct:Config	access:public
+EXEC	makefile	/^EXEC=curtool$/;"	m
+LBJS	makefile	/^LBJS=$(LIBS:.c=.o)$/;"	m
+LIBC	makefile	/^LIBC=libpr.a$/;"	m
+LIBS	makefile	/^LIBS=qstring.c \\$/;"	m
+LOG	qstring.c	/^void LOG(char *fl,int li,const char* ms, ...)$/;"	f	signature:(char *fl,int li,const char* ms, ...)
+LOG	qstring.h	/^extern void LOG(char *fl,int li,const char* ms, ...);$/;"	p	signature:(char *fl,int li,const char* ms, ...)
+LOG1	qstring.h	4;"	d
+LogName	curtool.c	/^char LogName[100];$/;"	v
+MAX_CONF_LEN	confparser.h	7;"	d
+OBJS	makefile	/^OBJS=$(SRCS:.c=.o)$/;"	m
+QSTRING_H	qstring.h	2;"	d
+SRCS	makefile	/^SRCS=curtool.c$/;"	m
+TestFunc	curtool.c	/^void TestFunc(int loopnum,Config *g_conf)$/;"	f	signature:(int loopnum,Config *g_conf)
+freeconf	curtool.c	/^void freeconf(Config * g_conf)$/;"	f	signature:(Config * g_conf)
+initconfig	confparser.c	/^Config * initconfig()$/;"	f
+initconfig	confparser.h	/^extern Config * initconfig();$/;"	p	signature:()
+loadconfig	confparser.c	/^void loadconfig(Config *conf)$/;"	f	signature:(Config *conf)
+loadconfig	confparser.h	/^extern void loadconfig(Config *conf);$/;"	p	signature:(Config *conf)
+main	curtool.c	/^int main(void )$/;"	f	signature:(void )
+setLogName	qstring.c	/^int setLogName(char *str)$/;"	f	signature:(char *str)
+setLogName	qstring.h	/^extern int setLogName(char *str);$/;"	p	signature:(char *str)
+std	curtool.c	/^using namespace std;$/;"	v
+strcat2	qstring.c	/^char * strcat2(int argc, const char *str1, const char * str2, ...) $/;"	f	signature:(int argc, const char *str1, const char * str2, ...)
+strcat2	qstring.h	/^extern char * strcat2(int argc, const char *str1, const char * str2, ...);$/;"	p	signature:(int argc, const char *str1, const char * str2, ...)
+strim	qstring.c	/^char * strim(char *str)$/;"	f	signature:(char *str)
+strim	qstring.h	/^extern char * strim(char *str);$/;"	p	signature:(char *str)
+strsplit	qstring.c	/^char ** strsplit(char *line, char delimeter, int *count, int limit)$/;"	f	signature:(char *line, char delimeter, int *count, int limit)
+strsplit	qstring.h	/^extern char ** strsplit(char *line, char delimeter, int *count, int limit);$/;"	p	signature:(char *line, char delimeter, int *count, int limit)
+url	confparser.h	/^    char            *url;$/;"	m	struct:Config	access:public
+vurl	confparser.h	/^    vector<char *>   vurl;$/;"	m	struct:Config	access:public
+yesnotoi	qstring.c	/^int yesnotoi(char *str)$/;"	f	signature:(char *str)
+yesnotoi	qstring.h	/^ int yesnotoi(char *str);$/;"	p	signature:(char *str)
